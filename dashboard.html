@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Police Dashboard | HopeLink AI</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>HopeLink AI</h1>
+
+    <p>Police Dashboard</p>
+
+</header>
+
+<div class="table-container">
+
+    <h2>Missing Person Reports</h2>
+
+    <table>
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Location</th>
+                <th>Date Missing</th>
+                <th>Description</th>
+                <th>Photo</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for report in reports %}
+
+            <tr>
+
+                <td>{{ report[0] }}</td>
+                <td>{{ report[1] }}</td>
+                <td>{{ report[2] }}</td>
+                <td>{{ report[3] }}</td>
+                <td>{{ report[4] }}</td>
+                <td>{{ report[5] }}</td>
+                <td>{{ report[6] }}</td>
+
+                <td>
+
+                    {% if report[7] %}
+
+                    <img src="{{ url_for('static', filename='uploads/' + report[7]) }}" alt="Photo">
+
+                    {% else %}
+
+                    No Photo
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+
+</html>
